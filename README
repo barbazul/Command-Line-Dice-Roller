@@ -1,0 +1,18 @@
+Ejemplos:
+
+Tirar un dado de 10 caras
+roll 1d10
+
+Tirar cinco dados de 6 caras
+roll 5d6
+
+Tirar un dado de 10 caras y otro de 6
+roll 1d10+1d6
+
+Tirar un dado de 20 caras y sumarle 5 al resultado
+roll 1d20+5
+
+Tirar un dado de 20 caras y RESTARLE 5 al resultado
+roll 1d20+-5
+
+
