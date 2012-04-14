@@ -1,0 +1,39 @@
+#! /usr/bin/php
+<?php
+
+function usage() {
+	echo <<<USAGE
+
+	roll [expr]
+	expr puede ser de la forma (XdY|-?N)(+(XdY|-?N))*
+
+
+USAGE;
+}
+
+if ($argc == 1) {
+	usage();
+	exit(1);
+}
+
+$expr = explode('+', $argv[1]);
+$results = array();
+$total = 0;
+
+foreach ($expr as $part) {
+	if (preg_match('/\d+d\d+/', $part)) {
+		list($dice, $faces) = explode('d', $part);
+		for ($i = 1; $i <= $dice; $i++) {
+			$roll = mt_rand(1, $faces);
+			$results[] = $roll;
+			$total += $roll;
+		}
+	} else if (is_numeric($part)) {
+		$total += $part;
+	} else {
+		exit("Error en la expresion.\n");
+	}
+}
+
+echo "Los resultados fueron: " . implode(',', $results) . "\n";
+echo "Total $total \n";
